@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Happy Raksha Bandhan!</title>
+    <style>
+        /* --- Google Font --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+        /* --- CSS Reset & Base Styles --- */
+        :root {
+            --dark-bg: #10001f;
+            --violet: #2a004f;
+            --navy: #000033;
+            --magenta: #ff00ff;
+            --cyan: #00ffff;
+            --gold: #ffd700;
+            --pink: #ff1493;
+            --green: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+body,
+html {
+    /* height: 100vh; */
+    /* width: 100vw; */
+    /* overflow: hidden; */
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--dark-bg);
+    color: #fff;
+    text-align: center;
+}
+        /* --- Landing Screen (Before Reveal) --- */
+        #landing-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            transition: opacity 1.5s ease-out;
+            z-index: 100;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        #landing-text {
+            font-size: clamp(2rem, 8vw, 4rem);
+            font-weight: 700;
+            padding: 0 20px;
+            animation: zoomInOut 5s ease-in-out infinite;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        @keyframes zoomInOut {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        #reveal-button {
+            margin-top: 30px;
+            padding: 15px 35px;
+            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-weight: 600;
+            color: #fff;
+            background-color: transparent;
+            border: 2px solid #fff;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--cyan), 0 0 25px var(--cyan), inset 0 0 10px rgba(255, 255, 255, 0.5);
+            animation: neonGlow 1.5s infinite alternate;
+        }
+
+        @keyframes neonGlow {
+            from {
+                box-shadow: 0 0 10px #fff, 0 0 20px var(--cyan), 0 0 30px var(--cyan);
+            }
+
+            to {
+                box-shadow: 0 0 20px #fff, 0 0 30px var(--pink), 0 0 40px var(--pink);
+            }
+        }
+
+        #reveal-button:hover {
+            transform: scale(1.1);
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* --- Main Celebration Page --- */
+        #celebration-page {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            /* Align content to the top */
+            padding-top: 2vh;
+            background: linear-gradient(135deg, var(--violet), var(--navy));
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease-in, visibility 1.5s;
+            z-index: 50;
+        }
+
+        #celebration-page.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- Canvas for Effects --- */
+        #celebration-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 51;
+            pointer-events: none;
+            /* Allows clicks to go through */
+        }
+
+        /* --- Content on Celebration Page --- */
+        .content-wrapper {
+            position: relative;
+            z-index: 52;
+            width: 100%;
+            max-width: 600px;
+            /* Max width for larger screens */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0 15px;
+        }
+
+        .happy-rakhi-text-container {
+            position: relative;
+            margin-bottom: -15px;
+            /* Slight overlap */
+        }
+
+        .happy-rakhi-text-bg-glow {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 120%;
+            height: 150%;
+            background: radial-gradient(circle, var(--magenta), transparent 60%), radial-gradient(circle, var(--cyan), transparent 60%);
+            background-blend-mode: screen;
+            filter: blur(40px);
+            animation: bgGlowRotate 10s linear infinite;
+        }
+
+        @keyframes bgGlowRotate {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+
+            100% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        h1#happy-rakhi-text {
+            font-size: clamp(2rem, 8vw, 4.5rem);
+            font-weight: 700;
+            animation: discoLights 4s linear infinite, blinkEffect 1s step-end infinite;
+            position: relative;
+        }
+
+        @keyframes discoLights {
+
+            0%,
+            100% {
+                color: var(--magenta);
+                text-shadow: 0 0 10px var(--magenta), 0 0 20px var(--magenta);
+            }
+
+            25% {
+                color: var(--cyan);
+                text-shadow: 0 0 10px var(--cyan), 0 0 20px var(--cyan);
+            }
+
+            50% {
+                color: var(--gold);
+                text-shadow: 0 0 10px var(--gold), 0 0 20px var(--gold);
+            }
+
+            75% {
+                color: var(--pink);
+                text-shadow: 0 0 10px var(--pink), 0 0 20px var(--pink);
+            }
+        }
+
+        @keyframes blinkEffect {
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        img#rakhi-gif {
+            width: 100%;
+            max-width: 280px;
+            /* Control max size */
+            height: auto;
+            border-radius: 20px;
+            margin-top: 1vh;
+            animation: pulseEffect 4s ease-in-out infinite;
+            filter: drop-shadow(0px 0px 15px rgba(0, 0, 0, 0.5));
+            /* Base shadow */
+        }
+
+        .rakhi-shadow-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .rakhi-shadow-container::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            z-index: -1;
+            opacity: 0.7;
+            animation: gradientShadow 6s linear infinite;
+        }
+
+        @keyframes gradientShadow {
+
+            0%,
+            100% {
+                box-shadow: 0 10px 30px -5px var(--magenta);
+            }
+
+            33% {
+                box-shadow: 0 10px 30px -5px var(--cyan);
+            }
+
+            66% {
+                box-shadow: 0 10px 30px -5px var(--gold);
+            }
+        }
+
+        @keyframes pulseEffect {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        #greeting-container {
+            margin-top: 2vh;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            width: 100%;
+            position: relative;
+        }
+
+        #greeting-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, var(--gold), transparent 70%);
+            filter: blur(30px);
+            opacity: 0.4;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+        }
+
+        #greeting-message {
+            font-size: clamp(1.1rem, 3.5vw, 1.5rem);
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        #greeting-name {
+            display: inline-block;
+            animation: nameGlow 3s linear infinite, nameZoom 6s ease-in-out infinite, nameBlink 1.5s step-end infinite;
+        }
+
+        @keyframes nameGlow {
+
+            0%,
+            100% {
+                color: var(--cyan);
+                text-shadow: 0 0 8px var(--cyan);
+            }
+
+            50% {
+                color: var(--pink);
+                text-shadow: 0 0 8px var(--pink);
+            }
+        }
+
+        @keyframes nameZoom {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes nameBlink {
+            50% {
+                opacity: 0.7;
+            }
+        }
+
+        /* --- Inputs and Buttons --- */
+        /* Add glowing effect for the name at the end of the message */
+        .glow-name {
+            display: inline-block;
+            animation: nameGlow 3s linear infinite, nameZoom 6s ease-in-out infinite, nameBlink 1.5s step-end infinite;
+        }
+
+        .controls-container {
+            margin-top: 2vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            color: #fff;
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px solid var(--cyan);
+            border-radius: 10px;
+            box-shadow: 0 0 10px var(--cyan);
+            transition: all 0.3s ease;
+        }
+
+        .input-field::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .input-field:focus {
+            outline: none;
+            box-shadow: 0 0 15px var(--magenta);
+            border-color: var(--magenta);
+        }
+
+        textarea.input-field {
+            resize: none;
+            height: 60px;
+        }
+
+        .button-row {
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+            /* Allow buttons to wrap on smaller screens */
+        }
+
+        .gift-button {
+            flex: 1;
+            padding: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #fff;
+            text-decoration: none;
+            background: linear-gradient(45deg, var(--gold), var(--pink));
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            animation: bouncePulse 2s infinite;
+        }
+
+        @keyframes bouncePulse {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+                box-shadow: 0 0 15px var(--gold);
+            }
+
+            50% {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 0 25px var(--pink);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Audio element for background music -->
+    <audio id="bg-music" loop src="rakhi.mp3"></audio>
+
+    <!-- 1. Initial Landing Screen -->
+    <div id="landing-screen">
+        <div id="landing-text">Special Raksha Bandhan message waiting for you</div>
+        <button id="reveal-button">Click to Reveal</button>
+    </div>
+
+    <!-- 2. Main Celebration Page -->
+    <div id="celebration-page">
+        <!-- Canvas for visual effects -->
+        <canvas id="celebration-canvas"></canvas>
+
+        <div class="content-wrapper">
+            <!-- Happy Raksha Bandhan Text -->
+            <div class="happy-rakhi-text-container">
+                <div class="happy-rakhi-text-bg-glow"></div>
+                <h1 id="happy-rakhi-text">Happy Raksha Bandhan To HARSHITA
+                </h1>
+            </div>
+
+            <!-- Rakhi GIF Image -->
+            <div class="rakhi-shadow-container">
+                <img id="rakhi-gif" src="rakhi.gif" alt="Animated Rakhi">
+            </div>
+
+            <!-- Greeting Message -->
+            <div id="greeting-container">
+                <p id="greeting-message">
+                    <span id="greeting-name"></span> ki taraf se:
+                    <span id="greeting-custom-message"></span>
+                    <span class="glow-name">HARSHITA</span>
+                </p>
+            </div>
+
+            <!-- Controls removed for minimal, static greeting page -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Element References ---
+            const landingScreen = document.getElementById('landing-screen');
+            const revealButton = document.getElementById('reveal-button');
+            const celebrationPage = document.getElementById('celebration-page');
+            const bgMusic = document.getElementById('bg-music');
+            const greetingNameEl = document.getElementById('greeting-name');
+            const greetingCustomMessageEl = document.getElementById('greeting-custom-message');
+
+            // --- Set greeting with default values ---
+            greetingNameEl.textContent = "SUKHVINDER";
+            greetingCustomMessageEl.textContent = "aapko Raksha Bandhan ki bahut bahut badhaiyan! Aapka pyaar aur saath hamesha mere liye khaas hai. Is Raksha Bandhan par, main dua karta hoon ki aapki zindagi khushiyon se bhari rahe. Aapka bhai hamesha aapke saath hai,";
+
+            // --- Reveal Button Click Handler ---
+            revealButton.addEventListener('click', () => {
+                // Hide landing screen
+                landingScreen.style.opacity = '0';
+                setTimeout(() => landingScreen.style.display = 'none', 1500);
+
+                // Show celebration page
+                celebrationPage.classList.add('visible');
+
+                // Play music and start effects
+                bgMusic.play().catch(error => {
+                    console.log("Audio playback was prevented. User interaction is needed.");
+                });
+
+                initializeCelebrationEffects();
+            });
+
+            // --- Advanced Celebration Effects (Canvas & Web Audio API) ---
+            function initializeCelebrationEffects() {
+                const canvas = document.getElementById('celebration-canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                let audioContext, analyser, dataArray, source;
+                let particles = [];
+                let flowers = [];
+                let balloons = [];
+
+                const flowerEmojis = ['🌺', '💐', '🌸', '🌼', '🌻', '🌟'];
+
+                // Setup Web Audio API for music reactivity
+                try {
+                    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                    analyser = audioContext.createAnalyser();
+                    source = audioContext.createMediaElementSource(bgMusic);
+                    source.connect(analyser);
+                    analyser.connect(audioContext.destination);
+                    analyser.fftSize = 128;
+                    const bufferLength = analyser.frequencyBinCount;
+                    dataArray = new Uint8Array(bufferLength);
+                } catch (e) {
+                    console.error("Web Audio API is not supported in this browser.", e);
+                }
+
+                // --- Particle Classes ---
+                class Particle {
+                    constructor(x, y, color) {
+                        this.x = x;
+                        this.y = y;
+                        this.size = Math.random() * 5 + 2;
+                        this.speedX = Math.random() * 3 - 1.5;
+                        this.speedY = Math.random() * 3 - 1.5;
+                        this.color = color;
+                        this.life = 100;
+                    }
+                    update() {
+                        this.x += this.speedX;
+                        this.y += this.speedY;
+                        this.life -= 1;
+                    }
+                    draw() {
+                        ctx.fillStyle = this.color;
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                        ctx.fill();
+                    }
+                }
+
+                class Flower {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = -20;
+                        this.emoji = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+                        this.size = Math.random() * 20 + 20;
+                        this.speedY = Math.random() * 1 + 1;
+                        this.sway = Math.random() * 0.5 - 0.25;
+                        this.rotation = 0;
+                        this.rotationSpeed = Math.random() * 0.02 - 0.01;
+                    }
+                    update() {
+                        this.y += this.speedY;
+                        this.x += this.sway;
+                        this.rotation += this.rotationSpeed;
+                    }
+                    draw() {
+                        ctx.save();
+                        ctx.translate(this.x, this.y);
+                        ctx.rotate(this.rotation);
+                        ctx.font = `${this.size}px Arial`;
+                        ctx.fillText(this.emoji, -this.size / 2, -this.size / 2);
+                        ctx.restore();
+                    }
+                }
+
+                class Balloon {
+                    constructor() {
+                        this.x = Math.random() * canvas.width;
+                        this.y = canvas.height + 50;
+                        this.size = Math.random() * 40 + 30; // random sizes
+                        this.speedY = Math.random() * 1 + 0.5;
+                        this.color = `hsl(${Math.random() * 360}, 100%, 70%)`; // random neon colors
+                        this.flicker = 1;
+                    }
+                    update() {
+                        this.y -= this.speedY;
+                        this.flicker = Math.random() * 0.5 + 0.5; // Flicker effect
+                    }
+                    draw() {
+                        ctx.beginPath();
+                        ctx.fillStyle = this.color;
+                        ctx.globalAlpha = this.flicker;
+                        // Draw balloon shape
+                        ctx.ellipse(this.x, this.y, this.size / 2, this.size / 1.5, 0, 0, Math.PI * 2);
+                        ctx.fill();
+                        // Draw knot
+                        ctx.beginPath();
+                        ctx.moveTo(this.x, this.y + this.size / 1.5);
+                        ctx.lineTo(this.x - 5, this.y + this.size / 1.5 + 10);
+                        ctx.lineTo(this.x + 5, this.y + this.size / 1.5 + 10);
+                        ctx.closePath();
+                        ctx.fill();
+                        ctx.globalAlpha = 1;
+                    }
+                }
+
+                // --- Animation Loop ---
+                function animate() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    // --- Music Reactive Confetti ---
+                    if (analyser) {
+                        analyser.getByteFrequencyData(dataArray);
+                        let beatSum = dataArray.reduce((a, b) => a + b, 0);
+                        let average = beatSum / dataArray.length;
+
+                        // Burst confetti on strong beats
+                        if (average > 50) { // Adjust threshold as needed
+                            const burstCount = Math.min(Math.floor(average / 15), 5); // Max 5 particles per frame
+                            for (let i = 0; i < burstCount; i++) {
+                                let x = Math.random() * canvas.width;
+                                let y = Math.random() * canvas.height;
+                                let color = ['var(--magenta)', 'var(--cyan)', 'var(--gold)'][Math.floor(Math.random() * 3)];
+                                particles.push(new Particle(x, y, color));
+                            }
+                        }
+                    }
+
+                    // Update and draw particles
+                    particles = particles.filter(p => p.life > 0);
+                    particles.forEach(p => { p.update(); p.draw(); });
+
+                    // --- Falling Flowers ---
+                    if (Math.random() < 0.025) { // Reduced density (25% of 0.1)
+                        flowers.push(new Flower());
+                    }
+                    flowers = flowers.filter(f => f.y < canvas.height + 30);
+                    flowers.forEach(f => { f.update(); f.draw(); });
+
+                    // --- Glowing Balloons ---
+                    if (Math.random() < 0.01) { // Low chance to spawn
+                        balloons.push(new Balloon());
+                    }
+                    balloons = balloons.filter(b => b.y > -60);
+                    balloons.forEach(b => { b.update(); b.draw(); });
+
+                    requestAnimationFrame(animate);
+                }
+
+                animate();
+
+                // --- Handle window resizing ---
+                window.addEventListener('resize', () => {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>

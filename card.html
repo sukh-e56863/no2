@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Personalized E-Card</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .card-container {
+            perspective: 1000px;
+            width: 100%;
+            max-width: 600px;
+            margin: 50px auto;
+        }
+
+        .card {
+            width: 100%;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.6s ease;
+            transform-style: preserve-3d;
+        }
+
+        .card {
+            font-family: 'Courier New', Courier, monospace, sans-serif;
+            padding: 20px;
+            color: white;
+            border-radius: 10px;
+            background: linear-gradient(270deg, #ff6ec4, #7873f5, #0b89a8, #0cebf3, #a234c4);
+            background-size: 800% 800%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* .card-container:hover .card {
+            transform: rotateY(10deg) rotateX(5deg);
+        } */
+
+        .card h2 {
+            color: #ff69b4;
+            text-align: center;
+        }
+
+        .card p {
+            color: #333;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card-container">
+        <div class="card" id="tiltcard">
+            <h2>Happy Rakshabandhan, HARSHITA!</h2>
+            <p>Dear sister,</p>
+            <p>On this special day, I want to tell you how much you mean to me. You're not just my sister, but also my
+                best friend and confidant. Your love, support, and the bond we share are priceless to me.</p>
+            <p>Though we may be apart, my love for you knows no distance. I cherish all our memories and look forward to
+                creating many more.</p>
+            <p>May this Rakshabandhan bring you joy, success, and all the happiness in the world.</p>
+            <p>With all my love and blessings,</p>
+            <p>SUKHVINDER</p>
+        </div>
+    </div>
+    <a href="photo.html" class="glow-button">Go To Album Scene</a>
+
+    <script>
+        const card = document.getElementById('tiltcard');
+        const container = document.querySelector('.card-container');
+
+        container.addEventListener('mousemove', tiltCard);
+        container.addEventListener('mouseleave', resetTilt);
+        container.addEventListener('touchmove', tiltCard);
+        container.addEventListener('touchend', resetTilt);
+
+        function tiltCard(e) {
+            let x, y;
+            if (e.type === 'touchmove') {
+                e.preventDefault(); // Prevent scrolling on touch devices
+                const touch = e.touches[0];
+                x = touch.clientX;
+                y = touch.clientY;
+            } else {
+                x = e.clientX;
+                y = e.clientY;
+            }
+
+            const rect = container.getBoundingClientRect();
+            const containerX = x - rect.left;
+            const containerY = y - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const tiltX = (containerY - centerY) / 10;
+            const tiltY = (centerX - containerX) / 10;
+
+            card.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+        }
+
+        function resetTilt() {
+            card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        }
+    </script>
+</body>
+
+</html>

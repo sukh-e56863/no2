@@ -1,0 +1,227 @@
+body {
+  background: linear-gradient(
+    270deg,
+    #ff6ec4,
+    #7873f5,
+    #0b89a8,
+    #0cebf3,
+    #a234c4
+  );
+  background-size: 800% 800%;
+  animation: gradientShift 10s ease infinite;
+  color: #b95858;
+  font-family: "Courier", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.album-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+}
+
+.album-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.auto-btn {
+  margin-top: 24px;
+  padding: 12px 36px;
+  font-size: 1.2rem;
+  width: auto;
+  min-width: 120px;
+  height: auto;
+  border-radius: 12px;
+  text-align: center;
+  z-index: 3;
+  display: inline-block;
+}
+.nav-btn {
+  /* background: #222;
+    color: #fff; */
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  z-index: 2;
+  color: #eb1212;
+  text-align: center;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff00ff, 0 0 20px #ff00ff,
+    0 0 25px #ff00ff, 0 0 30px #ff00ff, 0 0 35px #ff00ff;
+
+  border: 3px solid #00ffff;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+  transition: 0.3s ease;
+  display: block;
+}
+
+.nav-btn:hover,
+.nav-btn:focus {
+  background: #444;
+
+  box-shadow: 0 0 10px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
+  background-color: #00ffff;
+  color: green;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-button:active {
+  box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+  background-color: #00ffff;
+  color: #111;
+}
+
+.photo-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 90vw;
+  max-height: 70vh;
+  perspective: 1000px;
+  /* Remove width, height, aspect-ratio */
+}
+
+.photo-3d img {
+  display: block;
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.3s;
+  cursor: pointer;
+  background: #222;
+  user-select: none;
+  will-change: transform;
+}
+
+/* 3D tilt effect on hover/touch */
+.photo-3d img.tilted {
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.7);
+  animation: modalIn 0.3s;
+}
+
+@keyframes modalIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.close-btn {
+  position: absolute;
+  top: 32px;
+  right: 48px;
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 11;
+  transition: color 0.2s;
+}
+.close-btn:hover {
+  color: #ff5252;
+}
+
+.glow-button {
+  background-color: #111;
+  color: #00ffff;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+  display: inline-block;
+  margin: 20px auto 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  border: 3px solid #00ffff;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+  transition: 0.3s ease;
+  display: block;
+  margin-top: 20px;
+}
+
+ 
+
+.glow-button:hover {
+  box-shadow: 0 0 10px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
+  background-color: #00ffff;
+  color: #111;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glow-button:active { 
+  box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+  background-color: #00ffff;
+  color: #111;
+}

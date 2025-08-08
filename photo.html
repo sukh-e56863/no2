@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Photo Album</title>
+    <link rel="stylesheet" href="photo.css">
+</head>
+<body>
+    <div class="album-container">
+        <div class="album-row">
+            <button class="nav-btn prev-btn" title="Previous">&#8592;</button>
+            <div class="photo-3d" id="photo3d">
+                <!-- Images will be injected here by JS -->
+            </div>
+            <button class="nav-btn next-btn" title="Next">&#8594;</button>
+        </div>
+        <button class="nav-btn auto-btn" id="auto" title="Auto">Auto</button>
+    </div>
+
+    <audio id="clickAudio" src="assets/audio/swoosh.mp3"></audio>
+
+    <!-- Modal for full-scale view -->
+    <div class="modal" id="modal">
+        <span class="close-btn" id="closeModal">&times;</span>
+        <img class="modal-content" id="modalImg" alt="Full Photo">
+    </div>
+
+    <a class="glow-button" href="rakhi.html">Go To E-GIFT</a>
+
+<script src="photo.js"></script>
+</body>
+</html>

@@ -1,0 +1,63 @@
+body{
+   background: linear-gradient(to right, rgb(255, 21, 196), rgb(70, 70, 243) );
+}
+
+h1 {
+    text-align: center;
+    color: rgb(0, 225, 255);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+.neon-glow {
+    font-size: 3em;
+    color: #eb1212;
+    text-align: center;
+    text-shadow: 
+        0 0 5px #fff, 
+        0 0 10px #fff, 
+        0 0 15px #ff00ff, 
+        0 0 20px #ff00ff, 
+        0 0 25px #ff00ff, 
+        0 0 30px #ff00ff, 
+        0 0 35px #ff00ff;
+}
+
+.glow-button {
+  background-color: #111;
+  color: #00ffff;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  width: fit-content;
+  display: block;
+  margin: 20px auto 0 auto;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  border: 3px solid #00ffff;
+  border-radius: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+  transition: 0.3s ease;
+  display: block;
+  margin-top: 20px;
+}
+
+ 
+
+.glow-button:hover {
+  box-shadow: 0 0 10px #00ffff, 0 0 25px #00ffff, 0 0 50px #00ffff;
+  background-color: #00ffff;
+  color: #111;
+  transform: scale(1.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glow-button:active { 
+  box-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
+  background-color: #00ffff;
+  color: #111;
+}
