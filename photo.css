@@ -15,8 +15,9 @@ body {
   padding: 0;
   min-height: 100vh;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 @keyframes gradientShift {
@@ -28,6 +29,62 @@ body {
   }
   100% {
     background-position: 0% 50%;
+  }
+}
+
+h1 {
+  margin-top: 32px;
+  margin-bottom: 16px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #0011ff;
+  text-shadow:
+    0 0 8px #00fff7,
+    0 0 16px #00fff7,
+    0 0 32px #0cebf3,
+    0 0 48px #a234c4,
+    0 0 64px #ff6ec4,
+    0 2px 8px #a234c4,
+    0 0 20px #0cebf3;
+  animation: neon-flicker 1.5s infinite alternate;
+}
+
+.sister-message {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+    font-weight: 500;
+    line-height: 1.6;
+    color: #527717; /* Warm brown tone */
+    text-align: center;
+    padding: 20px;
+    background: transparent; /* Soft ivory */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.highlight {
+    color: #e63946; /* Festive red */
+    font-weight: bold;
+}
+em {
+    font-style: italic;
+    color: #af0a99; /* Teal for playful tone */
+}
+
+@keyframes neon-flicker {
+  0%, 100% {
+    opacity: 1;
+    filter: brightness(1.2) drop-shadow(0 0 8px #00fff7);
+  }
+  80% {
+    opacity: 0.85;
+    filter: brightness(1.5) drop-shadow(0 0 16px #0cebf3);
+  }
+  90% {
+    opacity: 0.7;
+    filter: brightness(2) drop-shadow(0 0 32px #a234c4);
   }
 }
 
@@ -148,7 +205,7 @@ body {
   align-items: center;
   justify-content: center;
 }
-
+ 
 .modal.show {
   display: flex;
 }

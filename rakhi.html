@@ -457,6 +457,7 @@ html {
         <button id="reveal-button">Click to Reveal</button>
     </div>
 
+
     <!-- 2. Main Celebration Page -->
     <div id="celebration-page">
         <!-- Canvas for visual effects -->
@@ -466,8 +467,7 @@ html {
             <!-- Happy Raksha Bandhan Text -->
             <div class="happy-rakhi-text-container">
                 <div class="happy-rakhi-text-bg-glow"></div>
-                <h1 id="happy-rakhi-text">Happy Raksha Bandhan To HARSHITA
-                </h1>
+                <h1 id="happy-rakhi-text">Happy Raksha Bandhan To HARSHITA</h1>
             </div>
 
             <!-- Rakhi GIF Image -->
@@ -500,23 +500,26 @@ html {
 
             // --- Set greeting with default values ---
             greetingNameEl.textContent = "SUKHVINDER";
-            greetingCustomMessageEl.textContent = "aapko Raksha Bandhan ki bahut bahut badhaiyan! Aapka pyaar aur saath hamesha mere liye khaas hai. Is Raksha Bandhan par, main dua karta hoon ki aapki zindagi khushiyon se bhari rahe. Aapka bhai hamesha aapke saath hai,";
+            greetingCustomMessageEl.textContent = "aapko Raksha Bandhan ki bahut bahut badhaiyan! Aapka pyaar aur saath hamesha mere liye khaas hai. Is Raksha Bandhan par, main dua karta hoon ki aapki zindagi khushiyon se bhari rahe. Aapka bhai hamesha aapke saath hai, pyaari";
 
             // --- Reveal Button Click Handler ---
             revealButton.addEventListener('click', () => {
                 // Hide landing screen
-                landingScreen.style.opacity = '0';
-                setTimeout(() => landingScreen.style.display = 'none', 1500);
+                    landingScreen.style.opacity = '0';
+                    setTimeout(() => landingScreen.style.display = 'none', 1500);
 
-                // Show celebration page
-                celebrationPage.classList.add('visible');
+                    // Show celebration page
+                    celebrationPage.classList.add('visible');
 
-                // Play music and start effects
-                bgMusic.play().catch(error => {
-                    console.log("Audio playback was prevented. User interaction is needed.");
-                });
+                    // Show footer in right bottom
+                    document.getElementById('end-footer').style.display = 'block';
 
-                initializeCelebrationEffects();
+                    // Play music and start effects
+                    bgMusic.play().catch(error => {
+                        console.log("Audio playback was prevented. User interaction is needed.");
+                    });
+
+                    initializeCelebrationEffects();
             });
 
             // --- Advanced Celebration Effects (Canvas & Web Audio API) ---
@@ -682,6 +685,11 @@ html {
         });
     </script>
 
+
+    <footer style="width:100%;text-align:center;padding:24px 0 16px 0;color:#ffd700;font-size:1.2rem;letter-spacing:1px;opacity:0.85;z-index:100;position:relative;">
+        <footer id="end-footer" style="display:none;position:fixed;right:24px;bottom:24px;text-align:right;padding:12px 24px;color:#ffd700;font-size:1.2rem;letter-spacing:1px;opacity:0.92;z-index:999;background:rgba(16,0,31,0.85);border-radius:16px;box-shadow:0 0 16px #ff00ff,0 0 32px #00ffff;">
+            <span style="text-shadow:0 0 10px #ff00ff,0 0 20px #00ffff,0 0 30px #ffd700;font-weight:bold;">End of the Gift</span>
+        </footer>
 </body>
 
 </html>
